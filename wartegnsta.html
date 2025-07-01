@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Warteg Insta - Rumah Makan Favorit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  :root {
+    --hijau-dominan: #29492F;
+    --oren-dominan: #D14500;
+    --putih-dominan: #FFFBEB;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--putih-dominan);
+    color: var(--hijau-dominan);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: var(--oren-dominan);
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  header {
+    background-color: var(--hijau-dominan);
+    padding: 16px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px var(--shadow-color);
+  }
+
+  .nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--putih-dominan);
+    letter-spacing: 2px;
+    user-select: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+  }
+
+  nav ul li {
+    font-weight: 600;
+  }
+
+  nav ul li a {
+    color: var(--putih-dominan);
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.25s ease;
+  }
+
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background-color: var(--oren-dominan);
+    color: var(--putih-dominan);
+    outline: none;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 40px auto 80px;
+    padding: 0 24px;
+    flex-grow: 1;
+  }
+
+  /* Section Titles */
+  h2.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+    color: var(--hijau-dominan);
+  }
+
+  /* Favorit Kami */
+  #favorit-kami {
+    margin-bottom: 80px;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+  }
+
+  .menu-card {
+    background-color: var(--putih-dominan);
+    border-radius: 16px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 24px 16px 32px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-card:hover,
+  .menu-card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(209, 69, 0, 0.3);
+  }
+
+  .menu-image {
+    width: 100%;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .menu-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--hijau-dominan);
+    margin-bottom: 8px;
+  }
+
+  .menu-description {
+    font-size: 0.95rem;
+    color: #4a4a4a;
+  }
+
+  /* Tentang Kami */
+  #tentang-kami {
+    max-width: 700px;
+    background-color: var(--putih-dominan);
+    padding: 32px 24px;
+    border-radius: 16px;
+    margin: 0 auto 80px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+  }
+  #tentang-kami p {
+    font-size: 1.1rem;
+    color: var(--hijau-dominan);
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  /* Apa Kata Mereka */
+  #apa-kata-mereka {
+    margin-bottom: 80px;
+  }
+  .testimonial-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  .testimonial-card {
+    background-color: var(--putih-dominan);
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    position: relative;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    color: #3a3a3a;
+    margin-bottom: 20px;
+    min-height: 100px;
+  }
+
+  .testimonial-author {
+    font-weight: 700;
+    color: var(--oren-dominan);
+    font-size: 1rem;
+  }
+
+  /* Hubungi Kami */
+  #hubungi-kami {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    background-color: var(--putih-dominan);
+    padding: 32px 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+  }
+  #hubungi-kami form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #hubungi-kami label {
+    font-weight: 600;
+    color: var(--hijau-dominan);
+    font-size: 1rem;
+  }
+  #hubungi-kami input,
+  #hubungi-kami textarea {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1.5px solid var(--hijau-dominan);
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.25s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+  #hubungi-kami input:focus,
+  #hubungi-kami textarea:focus {
+    outline: none;
+    border-color: var(--oren-dominan);
+  }
+  #hubungi-kami textarea {
+    min-height: 120px;
+  }
+  #hubungi-kami button {
+    background-color: var(--oren-dominan);
+    color: var(--putih-dominan);
+    padding: 14px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #hubungi-kami button:hover,
+  #hubungi-kami button:focus {
+    background-color: #ba3c00;
+    outline: none;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 24px;
+    background-color: var(--hijau-dominan);
+    color: var(--putih-dominan);
+    font-size: 0.9rem;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    main {
+      margin: 24px auto 64px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav-container" role="navigation" aria-label="Menu navigasi utama">
+    <div class="logo">Warteg Insta</div>
+    <nav>
+      <ul>
+        <li><a href="#favorit-kami">Favorit Kami</a></li>
+        <li><a href="#tentang-kami">Tentang Kami</a></li>
+        <li><a href="#apa-kata-mereka">Apa Kata Mereka</a></li>
+        <li><a href="#hubungi-kami">Hubungi Kami</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="favorit-kami" aria-labelledby="judul-favorit-kami">
+    <h2 id="judul-favorit-kami" class="section-title">Favorit Kami</h2>
+    <div class="menu-grid">
+      <article tabindex="0" class="menu-card" aria-label="Menu Nasi Goreng Spesial">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c66e044d-f9fb-4e34-8386-34afc7863fc7.png" alt="Piring nasi goreng spesial dengan telur dan sayuran" class="menu-image" />
+        <h3 class="menu-name">Nasi Goreng Spesial</h3>
+        <p class="menu-description">Nasi goreng khas warteg dengan telur, ayam, dan sayuran segar.</p>
+      </article>
+      <article tabindex="0" class="menu-card" aria-label="Menu Sayur Asem">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3acf90e6-c4c3-4eb9-87fb-c9c1e2dfc29a.png" alt="Mangkok sayur asem dengan kuah bening dan sayuran" class="menu-image" />
+        <h3 class="menu-name">Sayur Asem</h3>
+        <p class="menu-description">Sayur asem segar dengan bumbu asam pedas yang menggugah selera.</p>
+      </article>
+      <article tabindex="0" class="menu-card" aria-label="Menu Soto Ayam">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/38ee1db0-0040-4bf3-accc-f27f1327a150.png" alt="Mangkok soto ayam panas dengan koya dan telur" class="menu-image" />
+        <h3 class="menu-name">Soto Ayam</h3>
+        <p class="menu-description">Kuah bening, daging ayam, dan bumbu rahasia khas warteg.</p>
+      </article>
+      <article tabindex="0" class="menu-card" aria-label="Menu Tempe Goreng">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ff020e3f-d468-478c-bc71-09926d2383b6.png" alt="Potongan tempe goreng dengan sambal kecap" class="menu-image" />
+        <h3 class="menu-name">Tempe Goreng</h3>
+        <p class="menu-description">Tempe goreng renyah, sempurna untuk teman makan nasi.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="tentang-kami" aria-labelledby="judul-tentang-kami">
+    <h2 id="judul-tentang-kami" class="section-title">Tentang Kami</h2>
+    <p>Warteg Insta hadir sebagai warung makan praktis dengan cita rasa khas, menghadirkan hidangan rumahan yang nikmat dan terjangkau untuk semua kalangan. Kami berkomitmen memberikan pelayanan terbaik dengan suasana yang ramah dan bersih.</p>
+  </section>
+
+  <section id="apa-kata-mereka" aria-labelledby="judul-apa-kata-mereka">
+    <h2 id="judul-apa-kata-mereka" class="section-title">Apa Kata Mereka</h2>
+    <div class="testimonial-list" role="list">
+      <blockquote class="testimonial-card" role="listitem" tabindex="0">
+        <p class="testimonial-text">"Makan di Warteg Insta selalu bikin kangen. Masakannya lezat dan harganya sangat bersahabat."</p>
+        <footer class="testimonial-author">- Budi Santoso</footer>
+      </blockquote>
+      <blockquote class="testimonial-card" role="listitem" tabindex="0">
+        <p class="testimonial-text">"Pelayanan cepat, tempatnya bersih, dan menu favorit saya adalah soto ayamnya yang mantap."</p>
+        <footer class="testimonial-author">- Sari Dewi</footer>
+      </blockquote>
+      <blockquote class="testimonial-card" role="listitem" tabindex="0">
+        <p class="testimonial-text">"Suasananya hangat dan makanan selalu fresh. Pas untuk makan siang bersama teman kantor."</p>
+        <footer class="testimonial-author">- Andi Wijaya</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="hubungi-kami" aria-labelledby="judul-hubungi-kami">
+    <h2 id="judul-hubungi-kami" class="section-title">Hubungi Kami</h2>
+    <form aria-label="Formulir kontak Warteg Insta">
+      <label for="nama">Nama</label>
+      <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required />
+
+      <label for="pesan">Pesan</label>
+      <textarea id="pesan" name="pesan" placeholder="Tulis pesan Anda di sini" required></textarea>
+
+      <button type="submit">Kirim Pesan</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2024 Warteg Insta. Semua hak cipta dilindungi.
+</footer>
+
+<script>
+  // Simple form submit handler with feedback
+  const form = document.querySelector('form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Terima kasih telah menghubungi kami, ' + form.nama.value + '!');
+    form.reset();
+  });
+</script>
+</body>
+</html>
